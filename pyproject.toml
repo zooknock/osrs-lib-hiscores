@@ -1,0 +1,51 @@
+[project]
+name = "osrs-lib-hiscores"
+version = "0.1.0"
+description = "A lightweight, typed Python client for scraping OSRS hiscores data."
+readme = "README.md"
+authors = [{ name = "zooknock", email = "zooknock@proton.me"}]
+classifiers = [
+"Programming Language :: Python :: 3.14",
+]
+keywords = ["osrs", "old school", "runescape", "hiscores", "hiscore"]
+requires-python = ">=3.14"
+dependencies = [
+    "bs4>=0.0.2",
+    "requests>=2.34.2",
+    "sqlalchemy>=2.0.52",
+    "urllib3>=2.7.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ty>=0.0.73",
+]
+
+[project.urls]
+Repository = "https://github.com/zooknock/osrs-lib-hiscores"
+
+[build-system]
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["osrs_lib_hiscores"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ty.rules]
+missing-type-argument = "error"
+possibly-unresolved-reference = "warn"
+unsound-return-statement = "error"
+
+[tool.ruff.lint]
+extend-select = ["ANN", "PYI"]
+preview = true

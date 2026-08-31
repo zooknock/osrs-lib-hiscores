@@ -1,0 +1,28 @@
+version: "3"
+
+tasks:
+  lint:
+    cmds:
+      - uvx ruff check
+
+  type:
+    cmds:
+      - uvx ty check
+
+  test:
+    cmds:
+      - pytest --cov=src --cov-report=term-missing
+
+  check:
+    cmds:
+      - task lint
+      - task type
+      - task test
+
+  fix:
+    cmds:
+      - ruff format . ; ruff check . --fix
+
+  build:
+    cmds:
+      - uv build
